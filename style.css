@@ -1,251 +1,390 @@
-/* ===================================================================
-   RESET + BASE
-=================================================================== */
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: radial-gradient(circle at top, #040713, #02040a 60%);
+  background: radial-gradient(ellipse at bottom, #060b18, #01030a);
   color: #eaf3ff;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  perspective: 1600px;
+  perspective: 1400px;
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
   color: inherit;
 }
 
-/* ===================================================================
-   TRUE 3D BACKGROUND (NO PARTICLES)
-=================================================================== */
-.bg-3d-scene {
+/* ============================================================
+   3D PAGE TRANSITION
+============================================================ */
+#page-transition {
   position: fixed;
   inset: 0;
-  z-index: 0;
-  perspective: 1600px;
-  overflow: hidden;
+  background: radial-gradient(circle, #6f87ff, #000);
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0;
+  z-index: 999999;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.bg-orbit {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  border: 1px dashed rgba(75,184,255,0.25);
-  animation: orbitSpin 30s linear infinite;
+#page-transition.pt-active {
+  transform: scale(1);
+  opacity: 1;
 }
 
-.orbit-1 { top: -200px; left: -250px; }
-.orbit-2 { bottom: -200px; right: -250px; animation-duration: 45s; }
-.orbit-3 { top: 40%; left: 10%; animation-duration: 60s; }
-
-@keyframes orbitSpin {
-  from { transform: rotateX(65deg) rotateZ(0deg); }
-  to { transform: rotateX(65deg) rotateZ(360deg); }
-}
-
-.bg-cube {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(45deg,#4bb8ff,#6f87ff);
-  filter: blur(0.3px);
-  transform-style: preserve-3d;
-  animation: cubeFloat 18s ease-in-out infinite;
-  opacity: 0.5;
-}
-
-.cube-1 { top: 20%; left: 15%; }
-.cube-2 { bottom: 18%; right: 22%; animation-duration: 26s; }
-.cube-3 { top: 45%; right: 12%; animation-duration: 36s; }
-
-@keyframes cubeFloat {
-  0%,100% { transform: translateZ(0) rotateX(0) rotateY(0); }
-  50% { transform: translateZ(280px) rotateX(180deg) rotateY(180deg); }
-}
-
-.bg-sphere {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #6f87ff, #02040a);
-  opacity: 0.35;
-  animation: sphereFloat 25s ease-in-out infinite;
-}
-
-.sphere-1 { top: 30%; right: 12%; }
-.sphere-2 { bottom: 18%; left: 18%; animation-duration: 40s; }
-
-@keyframes sphereFloat {
-  0%,100% { transform: translateZ(0); }
-  50% { transform: translateZ(240px); }
-}
-
-/* ===================================================================
+/* ============================================================
    NAVBAR (3D GLASS)
-=================================================================== */
+============================================================ */
 .navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  inset: 0 auto auto 0;
+  width: 100%;
   padding: 18px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(14px);
-  background: rgba(5,8,15,0.55);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10, 15, 30, 0.6);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   z-index: 1000;
+  transform: translateZ(60px);
 }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.85rem;
-  background: linear-gradient(90deg,#6f87ff,#3acbff);
+.logo a {
+  font-size: 1.9rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #6f87ff, #3acbff);
   -webkit-background-clip: text;
   color: transparent;
-  transition: 0.25s;
 }
 
 .navbar nav a {
-  margin-left: 26px;
-  font-size: 1.1rem;
-  color: #d7e2ff;
+  margin-left: 28px;
+  font-size: 1.05rem;
+  color: #cfe0ff;
+  position: relative;
 }
 
-/* ===================================================================
-   HERO (3D DEPTH)
-=================================================================== */
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #3acbff;
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover::after,
+.navbar nav a.active::after {
+  width: 100%;
+}
+
+/* ============================================================
+   HERO SECTION (TRUE 3D ORBIT)
+============================================================ */
 .hero {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: 40px;
-  min-height: calc(100vh - 80px);
-  padding-top: 120px;
-  position: relative;
-  z-index: 5;
+  gap: 60px;
+  padding: 140px 6% 80px;
   transform-style: preserve-3d;
 }
 
-.hero-left { flex: 1; }
-.hero-right { flex: 1; display:flex; justify-content:center; }
+.hero-left {
+  flex: 1;
+}
 
-.logo-frame {
-  width: 360px;
-  height: 360px;
+.hello {
+  font-size: 1.1rem;
+  color: #9fb3d7;
+}
+
+.name {
+  font-size: 3.2rem;
+  font-weight: 900;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #6f87ff, #3acbff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #3acbff;
+}
+
+.hero-description {
+  margin-top: 12px;
+  color: #c3d3ef;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SOCIAL ICONS (FLOAT)
+============================================================ */
+.social-icons {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.social-icons a {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(58,203,255,0.15), transparent 60%);
+  border: 1px solid rgba(58, 203, 255, 0.5);
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255,255,255,0.1);
+  color: #3acbff;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: #3acbff;
+  color: #000;
+  transform: translateY(-6px) scale(1.05);
+}
+
+/* ============================================================
+   3D BUTTON SYSTEM
+============================================================ */
+.hire-btn,
+.project-btn,
+.send-btn,
+.btn-3d {
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: 2px solid #3acbff;
+  color: #3acbff;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+.hire-btn:hover,
+.project-btn:hover,
+.send-btn:hover,
+.btn-3d:hover {
+  background: #3acbff;
+  color: #000;
+  transform: translateY(-4px);
+}
+
+.btn-3d.pressed {
+  transform: translateY(4px) scale(0.96);
+  box-shadow: 0 0 8px rgba(0,0,0,0.4) inset;
+}
+
+/* ============================================================
+   HERO LOGO — ORBIT + ENERGY FIELD
+============================================================ */
+.hero-right {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.logo-frame {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
   transform-style: preserve-3d;
-  animation: logoFloat3D 10s ease-in-out infinite;
+}
+
+.logo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: conic-gradient(#3acbff, #6f87ff, #3acbff);
+  filter: blur(30px);
+  opacity: 0.25;
+  animation: energySpin 12s linear infinite;
 }
 
 .hero-logo {
   width: 70%;
-  transform: translateZ(80px);
+  z-index: 2;
+  animation: float 4s ease-in-out infinite;
 }
 
-@keyframes logoFloat3D {
-  0%,100% { transform: rotateX(0) rotateY(0); }
-  50% { transform: rotateX(18deg) rotateY(-18deg); }
+@keyframes float {
+  50% {
+    transform: translateY(-16px);
+  }
 }
 
-/* ===================================================================
-   3D PROJECT CARDS
-=================================================================== */
+@keyframes energySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   PROJECTS (TRUE 3D FLOATING PANELS)
+============================================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
 .project-card-3d {
-  position: relative;
-  padding: 26px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.3));
-  border: 1px solid rgba(75,184,255,0.3);
+  background: linear-gradient(145deg, #0b1329, #050816);
+  border-radius: 18px;
+  padding: 24px;
   transform-style: preserve-3d;
-  transition: transform .25s ease, box-shadow .3s;
+  transition: 0.35s;
+  box-shadow:
+    0 14px 36px rgba(0,0,0,0.8),
+    inset 0 0 18px rgba(58,203,255,0.06);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.project-card-3d.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-card-3d:hover {
-  transform: translateZ(60px) rotateX(8deg) rotateY(-8deg);
-  box-shadow: 0 40px 80px rgba(75,184,255,0.25);
+  transform: translateY(-12px) rotateX(6deg);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.9),
+    0 0 22px rgba(58,203,255,0.5);
 }
 
-.project-content {
-  transform: translateZ(70px);
+.project-content h3 {
+  font-size: 1.35rem;
+  background: linear-gradient(90deg,#6f87ff,#3acbff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* ===================================================================
-   3D SKILLS
-=================================================================== */
+.project-content p {
+  color: #ccd9f5;
+  margin: 12px 0;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ============================================================
+   SKILLS — GLASS 3D PANELS
+============================================================ */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
 .skill-category {
-  background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(0,0,0,0.4));
-  border: 1px solid rgba(75,184,255,0.3);
-  padding: 20px;
-  border-radius: 16px;
-  transform-style: preserve-3d;
-}
-
-.skill-item {
-  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.4));
+  background: linear-gradient(145deg, #0a1228, #050914);
+  padding: 22px;
   border-radius: 14px;
-  transform: translateZ(30px);
+  box-shadow:
+    0 14px 36px rgba(0,0,0,0.8),
+    inset 0 0 18px rgba(58,203,255,0.06);
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-/* ===================================================================
-   CONTACT (DEPTH)
-=================================================================== */
-.contact-form input,
-.contact-form textarea {
-  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.6));
-  border: 1px solid rgba(75,184,255,0.35);
+.skill-category.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ===================================================================
-   FOOTER DEPTH
-=================================================================== */
+.cat-title {
+  color: #3acbff;
+  font-weight: 800;
+}
+
+/* ============================================================
+   CONTACT (3D FLOAT FORM)
+============================================================ */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: linear-gradient(145deg, #0a1228, #050914);
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.9);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ============================================================
+   FOOTER (DEPTH GLASS)
+============================================================ */
 .footer {
-  background: linear-gradient(to top, rgba(4,7,19,0.9), transparent);
+  margin-top: 100px;
+  padding: 40px;
+  text-align: center;
+  background: rgba(10, 15, 30, 0.65);
+  backdrop-filter: blur(12px);
 }
 
-/* ===================================================================
-   THEME TOGGLE (3D)
-=================================================================== */
-#theme-toggle {
+/* ============================================================
+   PRELOADER
+============================================================ */
+#preloader {
   position: fixed;
-  top: 22px;
-  right: 22px;
-  width: 46px; height: 46px;
+  inset: 0;
+  background: #02040a;
+  display: grid;
+  place-items: center;
+  z-index: 99999;
+}
+
+.loader-ring {
+  width: 90px;
+  height: 90px;
+  border: 6px solid transparent;
+  border-top: 6px solid #3acbff;
   border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  border: 2px solid #4bb8ff;
-  color: #4bb8ff;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 999999;
-  backdrop-filter: blur(6px);
-  transition: 0.3s;
+  animation: spin 1.2s linear infinite;
 }
 
-#theme-toggle:hover {
-  transform: translateZ(60px) scale(1.1);
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-#theme-toggle i.fa-moon { display: none; }
-#theme-toggle.light i.fa-sun { display: none; }
-#theme-toggle.light i.fa-moon { display: inline; }
-
-/* ===================================================================
-   MOBILE SAFE
-=================================================================== */
+/* ============================================================
+   RESPONSIVE
+============================================================ */
 @media (max-width: 900px) {
-  .hero { flex-direction: column; text-align: center; }
-  .logo-frame { width: 260px; height: 260px; }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .name {
+    font-size: 2.4rem;
+  }
 }
