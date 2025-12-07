@@ -3,13 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TriAI Labs • Mohd Zaheer Uddin</title>
+  <title>Qofeno Labs • Mohd Zaheer Uddin</title>
 
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
@@ -17,10 +15,13 @@
 </head>
 <body>
 
+  <!-- PAGE TRANSITION OVERLAY -->
+  <div id="page-transition" aria-hidden="true"></div>
+
   <!-- PRELOADER -->
   <div id="preloader" aria-hidden="true">
     <div class="loader-ring" role="img" aria-label="Loading"></div>
-    <p class="loader-text">TriAI Labs</p>
+    <p class="loader-text">Qofeno Labs</p>
   </div>
 
   <!-- THEME TOGGLE -->
@@ -29,28 +30,28 @@
     <i class="fa-solid fa-moon" aria-hidden="true"></i>
   </button>
 
-  <!-- 3D BACKGROUND SCENE (no particles) -->
+  <!-- 3D BACKGROUND SCENE -->
   <div class="bg-3d-scene" aria-hidden="true">
-    <div class="bg-orbit orbit-1"></div>
-    <div class="bg-orbit orbit-2"></div>
-    <div class="bg-orbit orbit-3"></div>
+    <div class="orbit orbit-1"></div>
+    <div class="orbit orbit-2"></div>
+    <div class="orbit orbit-3"></div>
 
-    <div class="bg-cube cube-1"></div>
-    <div class="bg-cube cube-2"></div>
-    <div class="bg-cube cube-3"></div>
+    <div class="cube cube-1"></div>
+    <div class="cube cube-2"></div>
+    <div class="cube cube-3"></div>
 
-    <div class="bg-sphere sphere-1"></div>
-    <div class="bg-sphere sphere-2"></div>
+    <div class="sphere sphere-1"></div>
+    <div class="sphere sphere-2"></div>
   </div>
 
   <!-- NAVBAR -->
-  <header class="navbar" id="navbar">
-    <div class="logo"><a href="#">TriAI Labs</a></div>
+  <header class="navbar" id="navbar" data-depth="0.0">
+    <div class="logo"><a href="#">Qofeno Labs</a></div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
   </header>
 
@@ -58,8 +59,8 @@
   <main>
 
     <!-- HERO -->
-    <section id="home" class="hero section parallax-section">
-      <div class="hero-left reveal-on-scroll" data-depth="0.12">
+    <section id="home" class="hero section" data-depth="0.05">
+      <div class="hero-left reveal-on-scroll">
         <h2 class="hello">Hello, I'm</h2>
 
         <h1 class="name">
@@ -76,40 +77,56 @@
         <!-- Social icons -->
         <div class="social-icons" aria-hidden="false">
           <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/"
-             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+             target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
           </a>
           <a href="https://github.com/SohailKhan0525"
-             target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+             target="_blank" rel="noopener noreferrer"
+             aria-label="GitHub">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
           </a>
           <a href="https://www.youtube.com/@OfficialSohailKhan5"
-             target="_blank" rel="noopener noreferrer" aria-label="Youtube">
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Youtube">
             <i class="fa-brands fa-youtube" aria-hidden="true"></i>
           </a>
           <a href="https://www.instagram.com/sohailkhan0525/"
-             target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Instagram">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
           </a>
         </div>
 
         <!-- Hire me -->
-        <div class="hire-wrapper">
-          <a href="#contact" class="hire-btn">Hire Me</a>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-3d primary-3d">Hire Me</a>
         </div>
       </div>
 
-      <div class="hero-right reveal-on-scroll" data-depth="0.22">
-        <!-- 3D floating logo frame (we'll animate with CSS/JS) -->
-        <div class="logo-frame" role="img" aria-label="TriAI Labs logo">
-          <div class="logo-orbit-ring"></div>
-          <img src="main.png" class="hero-logo" alt="TriAI Labs logo" />
+      <!-- HERO 3D LOGO ORBIT -->
+      <div class="hero-right reveal-on-scroll" data-depth="0.12">
+        <div class="hero-orbit-wrapper" data-tilt>
+          <div class="hero-energy-field"></div>
+
+          <div class="hero-orbit-ring hero-orbit-ring-1"></div>
+          <div class="hero-orbit-ring hero-orbit-ring-2"></div>
+          <div class="hero-orbit-ring hero-orbit-ring-3"></div>
+
+          <div class="hero-logo-frame" role="img" aria-label="Qofeno Labs logo">
+            <!-- rename your logo file to logo.png or update src -->
+            <img src="logo.png" class="hero-logo" alt="Qofeno Labs logo" />
+          </div>
+
+          <div class="hero-orbit-orb orb-1"></div>
+          <div class="hero-orbit-orb orb-2"></div>
+          <div class="hero-orbit-orb orb-3"></div>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="projects section parallax-section">
+    <section id="projects" class="projects section" data-depth="0.08">
       <h2 class="section-title">Projects</h2>
       <p class="section-subtext">
         Some of my featured work with Python, AI, automation, and engineering.
@@ -118,26 +135,28 @@
       <div class="projects-grid">
 
         <!-- PROJECT 1 -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.16">
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.18">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-house" aria-hidden="true"></i>
+              <i class="fa-solid fa-house"></i>
             </div>
 
             <h3>House Price Prediction</h3>
             <p>
-              An AI model that predicts house prices using key location and property features.
+              An AI model that predicts the price of a house based on key features
+              like area, rooms, and location.
             </p>
 
             <div class="project-buttons">
-              <a class="project-btn"
+              <a class="btn-3d ghost-3d"
                  href="https://housepriceprediction-rqo8ykwgldxbpemwl6kvok.streamlit.app/"
                  target="_blank" rel="noopener">
                 Live Demo
               </a>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/HousePricePrediction"
                  target="_blank" rel="noopener">
                 GitHub
@@ -146,29 +165,29 @@
           </div>
         </article>
 
-        <!-- PROJECT 2 (NO LIVE DEMO) -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.18">
+        <!-- PROJECT 2 -->
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.2">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-house-chimney-crack" aria-hidden="true"></i>
+              <i class="fa-solid fa-earth-americas"></i>
             </div>
 
             <h3>Global Earthquake Prediction</h3>
             <p>
-              A machine learning model that estimates global earthquake risk levels
-              from seismic and environmental features.
+              A machine learning model that estimates global earthquake risk
+              patterns from historical seismic data.
             </p>
 
             <div class="project-buttons">
-              <button
-                class="project-btn no-demo-btn"
-                type="button"
-                data-message="This is a pure ML model, so there’s no hosted live demo. Check the code on GitHub.">
-                No Live Demo
+              <button class="btn-3d ghost-3d no-demo"
+                      type="button"
+                      data-message="This project is a pure ML model, so no live demo is available.">
+                Live Demo
               </button>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/Global-Earthquake-Prediction"
                  target="_blank" rel="noopener">
                 GitHub
@@ -178,27 +197,28 @@
         </article>
 
         <!-- PROJECT 3 -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.2">
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.22">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <i class="fa-solid fa-heart-pulse"></i>
             </div>
 
             <h3>Heart Disease Prediction</h3>
             <p>
-              An AI model that predicts the likelihood of heart disease
-              based on patient health metrics and lifestyle factors.
+              A model that predicts the likelihood of heart disease from
+              patient health metrics and lifestyle factors.
             </p>
 
             <div class="project-buttons">
-              <a class="project-btn"
+              <a class="btn-3d ghost-3d"
                  href="https://heartdiseaseml-4zrcurmudxpfxbwygcuyyt.streamlit.app/"
                  target="_blank" rel="noopener">
                 Live Demo
               </a>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/HeartDiseaseML"
                  target="_blank" rel="noopener">
                 GitHub
@@ -208,27 +228,28 @@
         </article>
 
         <!-- PROJECT 4 -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.22">
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.24">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <i class="fa-solid fa-graduation-cap"></i>
             </div>
 
             <h3>Student Management</h3>
             <p>
-              A lightweight student record management system built in Python
-              and Streamlit for managing student data.
+              A streamlined student record management system built with Python,
+              designed to handle students, courses, and grades.
             </p>
 
             <div class="project-buttons">
-              <a class="project-btn"
+              <a class="btn-3d ghost-3d"
                  href="https://studentmanagementproject-ulj54ytmcyj55upzakbzhn.streamlit.app/"
                  target="_blank" rel="noopener">
                 Live Demo
               </a>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/StudentManagementProject"
                  target="_blank" rel="noopener">
                 GitHub
@@ -238,27 +259,28 @@
         </article>
 
         <!-- PROJECT 5 -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.24">
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.26">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              <i class="fa-solid fa-building-columns"></i>
             </div>
 
             <h3>Bank Management System</h3>
             <p>
-              A Python-based bank management system that supports account creation,
-              deposits, withdrawals, and viewing account details.
+              A Python-based banking system for account creation, deposits,
+              withdrawals, and balance inquiries.
             </p>
 
             <div class="project-buttons">
-              <a class="project-btn"
+              <a class="btn-3d ghost-3d"
                  href="https://bankmanagementproject-brt9pt282uavy8ddzzy7ql.streamlit.app/"
                  target="_blank" rel="noopener">
                 Live Demo
               </a>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/BankManagementProject"
                  target="_blank" rel="noopener">
                 GitHub
@@ -268,27 +290,28 @@
         </article>
 
         <!-- PROJECT 6 -->
-        <article class="project-card-3d reveal-on-scroll" data-tilt data-depth="0.26">
+        <article class="project-card-3d reveal-on-scroll"
+                 data-tilt data-depth="0.28">
           <canvas class="project-glow-canvas" aria-hidden="true"></canvas>
 
           <div class="project-content">
             <div class="project-icon" aria-hidden="true">
-              <i class="fa-solid fa-file" aria-hidden="true"></i>
+              <i class="fa-solid fa-file-lines"></i>
             </div>
 
-            <h3>File Handling Utility</h3>
+            <h3>File Handling</h3>
             <p>
-              A file handling tool built in Python & Streamlit
-              to create, read, and delete files interactively.
+              A file handling utility that lets users create, read, update,
+              and delete files via a friendly Python interface.
             </p>
 
             <div class="project-buttons">
-              <a class="project-btn"
+              <a class="btn-3d ghost-3d"
                  href="https://filehandlingproject-mbevgff23iqepxbioy4hx5.streamlit.app/"
                  target="_blank" rel="noopener">
                 Live Demo
               </a>
-              <a class="project-btn"
+              <a class="btn-3d outline-3d"
                  href="https://github.com/SohailKhan0525/File_Handling_Project"
                  target="_blank" rel="noopener">
                 GitHub
@@ -301,7 +324,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="skills section parallax-section">
+    <section id="skills" class="skills section" data-depth="0.06">
       <h2 class="section-title">My Skills</h2>
       <p class="section-subtext">Technologies I use and topics I'm learning.</p>
 
@@ -315,12 +338,15 @@
           <p class="cat-sub">Core foundations for AI engineering.</p>
 
           <div class="skill-box">
+
             <div class="skill-item" data-tilt>
               <div class="skill-head">
                 <span><i class="fa-brands fa-python" aria-hidden="true"></i> Python</span>
                 <small>Learned — 100%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="100" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="100" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -328,7 +354,9 @@
                 <span><i class="fa-brands fa-git-alt" aria-hidden="true"></i> Git</span>
                 <small>Learning — 40%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="40" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="40" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -336,7 +364,9 @@
                 <span><i class="fa-solid fa-terminal" aria-hidden="true"></i> Linux</span>
                 <small>Learning — 40%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="40" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="40" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -344,8 +374,11 @@
                 <span><i class="fa-solid fa-database" aria-hidden="true"></i> Data Structures</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -354,15 +387,18 @@
           <h3 class="cat-title">
             <i class="fa-solid fa-square-root-variable" aria-hidden="true"></i> Math
           </h3>
-          <p class="cat-sub">Mathematical backbone for ML & DL.</p>
+          <p class="cat-sub">Mathematical backbone for ML &amp; DL.</p>
 
           <div class="skill-box">
+
             <div class="skill-item" data-tilt>
               <div class="skill-head">
                 <span><i class="fa-solid fa-superscript" aria-hidden="true"></i> Linear Algebra</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -370,7 +406,9 @@
                 <span><i class="fa-solid fa-infinity" aria-hidden="true"></i> Calculus</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -378,7 +416,9 @@
                 <span><i class="fa-solid fa-percent" aria-hidden="true"></i> Probability</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -386,8 +426,11 @@
                 <span><i class="fa-solid fa-chart-simple" aria-hidden="true"></i> Statistics</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -399,12 +442,15 @@
           <p class="cat-sub">Modeling fundamentals for AI systems.</p>
 
           <div class="skill-box">
+
             <div class="skill-item" data-tilt>
               <div class="skill-head">
                 <span><i class="fa-solid fa-check-double" aria-hidden="true"></i> Supervised Learning</span>
                 <small>Learning — 80%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="80" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="80" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -412,7 +458,9 @@
                 <span><i class="fa-solid fa-expand" aria-hidden="true"></i> Unsupervised Learning</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -420,8 +468,11 @@
                 <span><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Model Evaluation</span>
                 <small>Halfway — 50%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="50" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="50" aria-hidden="true"></div>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -433,12 +484,15 @@
           <p class="cat-sub">Neural network families to learn.</p>
 
           <div class="skill-box">
+
             <div class="skill-item" data-tilt>
               <div class="skill-head">
                 <span><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Neural Networks</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -446,7 +500,9 @@
                 <span><i class="fa-solid fa-image" aria-hidden="true"></i> CNNs</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -454,7 +510,9 @@
                 <span><i class="fa-solid fa-wave-square" aria-hidden="true"></i> RNNs</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -462,8 +520,11 @@
                 <span><i class="fa-solid fa-shapes" aria-hidden="true"></i> Transformers</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -472,15 +533,18 @@
           <h3 class="cat-title">
             <i class="fa-solid fa-rocket" aria-hidden="true"></i> Modern AI
           </h3>
-          <p class="cat-sub">LLMs, RAG, agent systems & prompts.</p>
+          <p class="cat-sub">LLMs, RAG, agent systems &amp; prompts.</p>
 
           <div class="skill-box">
+
             <div class="skill-item" data-tilt>
               <div class="skill-head">
                 <span><i class="fa-solid fa-file-lines" aria-hidden="true"></i> LLMs</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -488,7 +552,9 @@
                 <span><i class="fa-solid fa-robot" aria-hidden="true"></i> Agentic AI</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -496,7 +562,9 @@
                 <span><i class="fa-solid fa-book" aria-hidden="true"></i> RAG</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
 
             <div class="skill-item" data-tilt>
@@ -504,8 +572,11 @@
                 <span><i class="fa-solid fa-terminal" aria-hidden="true"></i> Prompt Engineering</span>
                 <small>0–5%</small>
               </div>
-              <div class="bar"><div class="fill" data-level="5" aria-hidden="true"></div></div>
+              <div class="bar">
+                <div class="fill" data-level="5" aria-hidden="true"></div>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -513,7 +584,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact section parallax-section">
+    <section id="contact" class="contact section" data-depth="0.04">
       <h2 class="section-title">Get In Touch</h2>
       <p class="section-subtext">Let’s work together or talk about a project.</p>
 
@@ -521,13 +592,15 @@
         <input type="text" id="name" placeholder="Your Name" required />
         <input type="email" id="email" placeholder="Your Email" required />
         <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="send-btn">Send Message</button>
+        <button type="submit" class="btn-3d primary-3d send-btn">
+          Send Message
+        </button>
       </form>
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-      <h3>TriAI Labs</h3>
+    <footer class="footer" data-depth="0.02">
+      <h3>Qofeno Labs</h3>
       <p>Mohd Zaheer Uddin</p>
       <div class="footer-socials">
         <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/"
@@ -548,7 +621,7 @@
         </a>
       </div>
       <p class="copyright">
-        © 2025 TriAI Labs. Made with ❤️ by TriAI Labs.
+        © 2025 Qofeno Labs. Made with ❤️ by Qofeno Labs.
       </p>
     </footer>
 
@@ -557,7 +630,7 @@
   <!-- EmailJS SDK (required by your script) -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
 
-  <!-- Your main JS -->
+  <!-- Main JS -->
   <script src="script.js" defer></script>
 </body>
 </html>
