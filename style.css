@@ -1,10 +1,10 @@
 /* ============================================================
-   GLOBAL RESET
+   RESET + BASE
 ============================================================ */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
@@ -13,10 +13,32 @@ html {
 }
 
 body {
-  background: radial-gradient(ellipse at bottom, #060b18, #01030a);
+  background: radial-gradient(circle at top, #071020 0, #02040a 55%, #000 100%);
   color: #eaf3ff;
   overflow-x: hidden;
-  perspective: 1400px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3D canvas background */
+#three-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -2;
+}
+
+/* Soft gradient overlay to blend 3D with UI */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(111,135,255,0.25), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(58,203,255,0.18), transparent 50%);
+  z-index: -1;
 }
 
 a {
@@ -25,66 +47,59 @@ a {
 }
 
 /* ============================================================
-   3D PAGE TRANSITION
-============================================================ */
-#page-transition {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, #6f87ff, #000);
-  pointer-events: none;
-  transform: scale(0);
-  opacity: 0;
-  z-index: 999999;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-#page-transition.pt-active {
-  transform: scale(1);
-  opacity: 1;
-}
-
-/* ============================================================
-   NAVBAR (3D GLASS)
+   NAVBAR
 ============================================================ */
 .navbar {
   position: fixed;
-  inset: 0 auto auto 0;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 18px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 15, 30, 0.6);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(5, 8, 15, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
   z-index: 1000;
-  transform: translateZ(60px);
 }
 
-.logo a {
-  font-size: 1.9rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #6f87ff, #3acbff);
+.logo {
+  font-weight: 800;
+  font-size: 1.85rem;
+  background: linear-gradient(120deg,#6f87ff,#3acbff);
   -webkit-background-clip: text;
   color: transparent;
+  transition: transform 0.25s;
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.04);
 }
 
 .navbar nav a {
-  margin-left: 28px;
+  margin-left: 26px;
   font-size: 1.05rem;
-  color: #cfe0ff;
+  color: #d7e2ff;
   position: relative;
+  padding-bottom: 3px;
+  transition: color .18s ease;
 }
 
 .navbar nav a::after {
   content: "";
   position: absolute;
-  width: 0%;
-  height: 2px;
-  background: #3acbff;
   left: 0;
-  bottom: -6px;
-  transition: 0.3s;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg,#6f87ff,#3acbff);
+  transition: width 0.18s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+  color: #4bb8ff;
 }
 
 .navbar nav a:hover::after,
@@ -93,226 +108,388 @@ a {
 }
 
 /* ============================================================
-   HERO SECTION (TRUE 3D ORBIT)
+   SECTIONS
+============================================================ */
+.section {
+  padding: 110px 6%;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  background: linear-gradient(120deg,#6f87ff,#3acbff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.section-subtext {
+  text-align: center;
+  margin: 8px 0 22px;
+  color: #9fb3d7;
+}
+
+/* depth layers for parallax */
+.depth-layer {
+  will-change: transform;
+}
+
+/* ============================================================
+   HERO
 ============================================================ */
 .hero {
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: 60px;
-  padding: 140px 6% 80px;
-  transform-style: preserve-3d;
+  gap: 40px;
+  min-height: calc(100vh - 80px);
+  padding-top: 120px;
 }
 
 .hero-left {
   flex: 1;
+  max-width: 680px;
 }
 
 .hello {
+  color: #99a7c9;
   font-size: 1.1rem;
-  color: #9fb3d7;
+  margin-bottom: 4px;
 }
 
 .name {
-  font-size: 3.2rem;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.02;
 }
 
 .gradient {
-  background: linear-gradient(90deg, #6f87ff, #3acbff);
+  background: linear-gradient(120deg,#6f87ff,#3acbff);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #3acbff;
+  color: #4bb8ff;
+  font-size: 20px;
+  margin: 6px 0 10px;
+  transition: opacity 0.3s;
 }
 
 .hero-description {
-  margin-top: 12px;
-  color: #c3d3ef;
-  max-width: 600px;
+  color: #c4d0e6;
+  max-width: 620px;
   line-height: 1.6;
 }
 
-/* ============================================================
-   SOCIAL ICONS (FLOAT)
-============================================================ */
+/* Socials */
 .social-icons {
   display: flex;
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .social-icons a {
   width: 44px;
   height: 44px;
+  border: 2px solid #4bb8ff;
   border-radius: 50%;
-  border: 1px solid rgba(58, 203, 255, 0.5);
   display: grid;
   place-items: center;
-  color: #3acbff;
-  transition: 0.3s ease;
+  color: #4bb8ff;
+  font-size: 20px;
+  transition: 0.25s;
+  box-shadow: 0 0 0 rgba(75,184,255,0);
 }
 
 .social-icons a:hover {
-  background: #3acbff;
+  background: #4bb8ff;
   color: #000;
-  transform: translateY(-6px) scale(1.05);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(75,184,255,0.35);
 }
 
-/* ============================================================
-   3D BUTTON SYSTEM
-============================================================ */
-.hire-btn,
-.project-btn,
-.send-btn,
-.btn-3d {
-  padding: 12px 30px;
+/* Hire Me */
+.hire-wrapper {
+  margin-top: 18px;
+}
+
+.hire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 28px;
   border-radius: 999px;
-  border: 2px solid #3acbff;
-  color: #3acbff;
-  background: transparent;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.25s;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  border: 2px solid #4bb8ff;
+  color: #4bb8ff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: rgba(2,4,10,0.6);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
 }
 
-.hire-btn:hover,
-.project-btn:hover,
-.send-btn:hover,
-.btn-3d:hover {
-  background: #3acbff;
+.hire-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+}
+
+.hire-btn:hover {
+  background: #4bb8ff;
   color: #000;
-  transform: translateY(-4px);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(75,184,255,0.4);
 }
 
-.btn-3d.pressed {
-  transform: translateY(4px) scale(0.96);
-  box-shadow: 0 0 8px rgba(0,0,0,0.4) inset;
-}
-
-/* ============================================================
-   HERO LOGO — ORBIT + ENERGY FIELD
-============================================================ */
+/* HERO RIGHT — 3D logo orbit */
 .hero-right {
   flex: 1;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1200px;
+}
+
+.logo-orbit {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  transform-style: preserve-3d;
+  animation: subtleOrbit 18s ease-in-out infinite;
 }
 
 .logo-frame {
-  width: 340px;
-  height: 340px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  position: relative;
+  background: radial-gradient(circle at 30% 30%, rgba(58,203,255,0.20), rgba(10,12,20,0.9));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow:
+    0 0 35px rgba(58,203,255,0.35),
+    0 25px 60px rgba(0,0,0,0.8);
   transform-style: preserve-3d;
-}
-
-.logo-frame::before {
-  content: "";
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  background: conic-gradient(#3acbff, #6f87ff, #3acbff);
-  filter: blur(30px);
-  opacity: 0.25;
-  animation: energySpin 12s linear infinite;
+  transform: translateZ(40px);
 }
 
 .hero-logo {
   width: 70%;
-  z-index: 2;
-  animation: float 4s ease-in-out infinite;
+  height: 70%;
+  object-fit: contain;
+  animation: logoFloat 6s ease-in-out infinite;
 }
 
-@keyframes float {
-  50% {
-    transform: translateY(-16px);
-  }
+/* orbit ring */
+.logo-ring {
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  border: 1px dashed rgba(111,135,255,0.5);
+  box-shadow: 0 0 40px rgba(111,135,255,0.4);
+  transform: rotateX(70deg) translateZ(-40px);
 }
 
-@keyframes energySpin {
-  to {
-    transform: rotate(360deg);
-  }
+/* energy field */
+.logo-orbit-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(58,203,255,0.2), transparent 60%),
+    radial-gradient(circle at 20% 10%, rgba(163,126,255,0.35), transparent 55%);
+  filter: blur(4px);
+  opacity: 0.9;
+  transform: translateZ(-20px);
+}
+
+/* hero logo floating */
+@keyframes logoFloat {
+  0%,100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-10px) translateZ(12px); }
+}
+
+/* orbit wobble */
+@keyframes subtleOrbit {
+  0%   { transform: rotateX(16deg) rotateY(-14deg); }
+  50%  { transform: rotateX(24deg) rotateY(10deg); }
+  100% { transform: rotateX(16deg) rotateY(-14deg); }
 }
 
 /* ============================================================
-   PROJECTS (TRUE 3D FLOATING PANELS)
+   PROJECTS — 3D CARDS
 ============================================================ */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
   gap: 28px;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .project-card-3d {
-  background: linear-gradient(145deg, #0b1329, #050816);
+  position: relative;
+  padding: 26px;
   border-radius: 18px;
-  padding: 24px;
+  background: rgba(8,12,25,0.88);
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
   transform-style: preserve-3d;
-  transition: 0.35s;
-  box-shadow:
-    0 14px 36px rgba(0,0,0,0.8),
-    inset 0 0 18px rgba(58,203,255,0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.75);
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(28px) scale(0.98);
 }
 
+/* reveal */
 .project-card-3d.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
+/* hover lift (extra) */
 .project-card-3d:hover {
-  transform: translateY(-12px) rotateX(6deg);
   box-shadow:
-    0 30px 70px rgba(0,0,0,0.9),
-    0 0 22px rgba(58,203,255,0.5);
+    0 22px 60px rgba(0,0,0,0.9),
+    0 0 40px rgba(75,184,255,0.3);
+}
+
+/* soft gradient sheen */
+.project-card-3d::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 200deg,
+    rgba(75,184,255,0.5),
+    rgba(111,135,255,0.0),
+    rgba(58,203,255,0.35),
+    rgba(75,184,255,0.0),
+    rgba(75,184,255,0.5)
+  );
+  opacity: 0.2;
+  mix-blend-mode: screen;
+  transform: translate3d(-30%, -40%, -40px) rotateZ(0deg);
+  animation: cardSheen 22s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cardSheen {
+  0%   { transform: translate3d(-30%, -40%, -40px) rotateZ(0deg); }
+  50%  { transform: translate3d(-10%, -10%, -40px) rotateZ(180deg); }
+  100% { transform: translate3d(-30%, -40%, -40px) rotateZ(360deg); }
+}
+
+/* card content */
+.project-content {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(40px);
+}
+
+.project-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 30% 10%, rgba(75,184,255,0.9), rgba(75,184,255,0.1));
+  border: 1px solid rgba(75,184,255,0.45);
+  display: grid;
+  place-items: center;
+  color: #dff4ff;
+  font-size: 24px;
+  margin-bottom: 14px;
+  box-shadow:
+    0 0 18px rgba(75,184,255,0.55),
+    0 12px 26px rgba(0,0,0,0.75);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card-3d:hover .project-icon {
+  transform: translateY(-4px) translateZ(10px);
+  box-shadow:
+    0 0 26px rgba(75,184,255,0.85),
+    0 18px 32px rgba(0,0,0,0.9);
 }
 
 .project-content h3 {
-  font-size: 1.35rem;
-  background: linear-gradient(90deg,#6f87ff,#3acbff);
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(120deg,#6f87ff,#3acbff);
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 6px;
 }
 
 .project-content p {
-  color: #ccd9f5;
-  margin: 12px 0;
+  color: #c4d0e6;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 8px 0 16px;
 }
 
 .project-buttons {
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-/* ============================================================
-   SKILLS — GLASS 3D PANELS
-============================================================ */
+.project-btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 2px solid #4bb8ff;
+  color: #4bb8ff;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  font-size: 0.95rem;
+  background: rgba(2,4,10,0.4);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.75);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.project-btn:hover {
+  background: #4bb8ff;
+  color: #000;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 14px 35px rgba(75,184,255,0.4),
+    0 20px 45px rgba(0,0,0,0.9);
+}
+
+.project-btn:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow:
+    0 8px 18px rgba(75,184,255,0.25),
+    0 12px 26px rgba(0,0,0,0.9);
+}
+
+/* ===================================================================
+   SKILLS
+=================================================================== */
 .skills-container {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-  gap: 24px;
-  margin-top: 30px;
+  gap: 20px;
 }
 
 .skill-category {
-  background: linear-gradient(145deg, #0a1228, #050914);
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow:
-    0 14px 36px rgba(0,0,0,0.8),
-    inset 0 0 18px rgba(58,203,255,0.06);
+  background: rgba(8,12,25,0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 20px;
+  border-radius: 16px;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(22px);
+  transition: 0.7s;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.75);
 }
 
 .skill-category.visible {
@@ -321,70 +498,344 @@ a {
 }
 
 .cat-title {
-  color: #3acbff;
-  font-weight: 800;
+  color: #4bb8ff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-/* ============================================================
-   CONTACT (3D FLOAT FORM)
-============================================================ */
-.contact-form {
-  max-width: 600px;
-  margin: auto;
-  background: linear-gradient(145deg, #0a1228, #050914);
-  padding: 28px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.9);
+.cat-title i {
+  color: #4bb8ff;
+}
+
+.cat-sub {
+  color: #9fb3d7;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.skill-box {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* ============================================================
-   FOOTER (DEPTH GLASS)
-============================================================ */
-.footer {
-  margin-top: 100px;
-  padding: 40px;
-  text-align: center;
-  background: rgba(10, 15, 30, 0.65);
-  backdrop-filter: blur(12px);
+.skill-item {
+  background: rgba(15,20,40,0.95);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 14px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.25s ease;
 }
 
-/* ============================================================
-   PRELOADER
-============================================================ */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: #02040a;
+.skill-category.visible .skill-item {
+  animation: skillFade 0.6s ease forwards;
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-head span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4bb8ff;
+  font-weight: 600;
+}
+
+.skill-head i {
+  color: #4bb8ff;
+}
+
+.skill-head small {
+  color: #9fb3d7;
+  font-size: 0.8rem;
+}
+
+.bar {
+  width: 100%;
+  height: 9px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#7b33ff,#33c4ff);
+  box-shadow: 0 0 12px rgba(51,196,255,0.7);
+  transition: width 1.2s cubic-bezier(.2,.9,.2,1);
+}
+
+@keyframes skillFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
+   CONTACT
+=================================================================== */
+.contact-form {
+  max-width: 600px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(8,12,25,0.9);
+  border: 1px solid rgba(75,184,255,0.18);
+  padding: 14px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.98rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.7);
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.send-btn {
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 2px solid #4bb8ff;
+  color: #4bb8ff;
+  font-weight: 700;
+  background: rgba(2,4,10,0.7);
+  cursor: pointer;
+  transition: 0.22s;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+}
+
+.send-btn:hover {
+  background: #4bb8ff;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px rgba(75,184,255,0.4),
+    0 26px 60px rgba(0,0,0,0.95);
+}
+
+.send-btn:active {
+  transform: translateY(1px);
+}
+
+/* ===================================================================
+   FOOTER
+=================================================================== */
+.footer {
+  text-align: center;
+  padding: 40px 6%;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: #9fb3d7;
+  background: rgba(3,5,12,0.96);
+  box-shadow: 0 -12px 35px rgba(0,0,0,0.9);
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
-  z-index: 99999;
-}
-
-.loader-ring {
-  width: 90px;
-  height: 90px;
-  border: 6px solid transparent;
-  border-top: 6px solid #3acbff;
   border-radius: 50%;
-  animation: spin 1.2s linear infinite;
+  border: 1px solid rgba(75,184,255,0.26);
+  color: #4bb8ff;
+  transition: 0.25s;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.footer-socials a:hover {
+  background: #4bb8ff;
+  color: #000;
+  transform: translateY(-6px);
 }
 
-/* ============================================================
+/* ===================================================================
    RESPONSIVE
-============================================================ */
+=================================================================== */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
     text-align: center;
   }
-  .name {
-    font-size: 2.4rem;
+  .hero-right {
+    order: -1;
   }
+  .logo-orbit {
+    width: 260px;
+    height: 260px;
+  }
+  .logo-frame {
+    width: 200px;
+    height: 200px;
+  }
+  .name {
+    font-size: 34px;
+  }
+  .projects-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .project-card-3d {
+    padding: 20px;
+  }
+  .project-buttons {
+    flex-direction: column;
+  }
+}
+
+/* ===================================================================
+   PRELOADER
+=================================================================== */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #060a18 0, #02040a 45%, #000 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  transition: opacity 0.6s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-top: 6px solid #4bb8ff;
+  border-right: 6px solid #6f87ff;
+  animation: spinRing 1.2s linear infinite;
+  filter: drop-shadow(0 0 12px #3acbff);
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  color: #4bb8ff;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(58,203,255,0.6);
+}
+
+/* ===================================================================
+   LIGHT MODE
+=================================================================== */
+body.light-mode {
+  background: #f4f7ff;
+  color: #0b0f19;
+}
+
+body.light-mode::before {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(90,120,255,0.18), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(0,119,255,0.16), transparent 50%);
+}
+
+body.light-mode .navbar {
+  background: rgba(255,255,255,0.85);
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+body.light-mode .section-title {
+  background: linear-gradient(120deg,#3342d8,#0077ff);
+  -webkit-background-clip: text;
+}
+
+body.light-mode .project-card-3d {
+  background: rgba(255,255,255,0.98);
+  color: #0b0f19;
+  border-color: rgba(0,0,0,0.06);
+}
+
+body.light-mode .skill-category,
+body.light-mode .skill-item {
+  background: #ffffff;
+  color: #0b0f19;
+  border-color: rgba(0,0,0,0.06);
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+  background: #ffffff;
+  color: #0b0f19;
+}
+
+body.light-mode .footer {
+  background: #f0f3ff;
+  color: #3a4462;
+}
+
+/* ===================================================================
+   THEME TOGGLE
+=================================================================== */
+#theme-toggle {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid #4bb8ff;
+  color: #4bb8ff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999999;
+  transition: 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08) translateZ(8px);
+  box-shadow: 0 0 20px rgba(75,184,255,0.35);
+}
+
+#theme-toggle i.fa-moon {
+  display: none;
+}
+
+#theme-toggle.light i.fa-sun {
+  display: none;
+}
+
+#theme-toggle.light i.fa-moon {
+  display: inline;
 }
