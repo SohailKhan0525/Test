@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriAI Labs • Mohd Zaheer Uddin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Initializing TriAI Core...</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">TriAI <span>Labs</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact" class="btn-contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="badge">AI Engineer & Developer</div>
+                <h1>Mohd Zaheer <span class="gradient-text">Uddin</span></h1>
+                <p class="subtitle">Building intelligent tools, solving real-world problems, and architecting the future of <span id="typewriter"></span></p>
+                
+                <div class="cta-group">
+                    <a href="#projects" class="btn primary">View My Work</a>
+                    <a href="https://github.com/SohailKhan0525" target="_blank" class="btn secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="orb"></div>
+                <div class="orb-ring"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Advanced Machine Learning & Automation</p>
+            </div>
+
+            <div class="project-grid">
+                
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-house-signal"></i></div>
+                        <h3>House Price Prediction</h3>
+                        <p>An AI model that predicts housing prices based on market trends and data features.</p>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>ML</span>
+                            <span>Streamlit</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://housepriceprediction-rqo8ykwgldxbpemwl6kvok.streamlit.app/" target="_blank">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/SohailKhan0525/HousePricePrediction" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-earth-americas"></i></div>
+                        <h3>Global Earthquake AI</h3>
+                        <p>Predicting global earthquake risks using statistical modeling and historical seismic data.</p>
+                        <div class="tags">
+                            <span>Data Science</span>
+                            <span>Pandas</span>
+                            <span>Scikit-Learn</span>
+                        </div>
+                        <div class="links">
+                            <a href="#" class="disabled">No Live Demo</a>
+                            <a href="https://github.com/SohailKhan0525/Global-Earthquake-Prediction" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3>Heart Disease Prediction</h3>
+                        <p>Analyzing patient metrics to predict heart disease likelihood with high accuracy.</p>
+                        <div class="tags">
+                            <span>Healthcare AI</span>
+                            <span>Classification</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://heartdiseaseml-4zrcurmudxpfxbwygcuyyt.streamlit.app/" target="_blank">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/SohailKhan0525/HeartDiseaseML" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>Student Management</h3>
+                        <p>A robust backend system for managing academic records efficiently.</p>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>CRUD</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://studentmanagementproject-ulj54ytmcyj55upzakbzhn.streamlit.app/" target="_blank">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/SohailKhan0525/StudentManagementProject" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                        <h3>Bank Management</h3>
+                        <p>Simulation of core banking operations: deposits, withdrawals, and account management.</p>
+                        <div class="tags">
+                            <span>Automation</span>
+                            <span>Logic</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://bankmanagementproject-brt9pt282uavy8ddzzy7ql.streamlit.app/" target="_blank">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/SohailKhan0525/BankManagementProject" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fa-solid fa-file-code"></i></div>
+                        <h3>File Handling System</h3>
+                        <p>High-performance file I/O operations utility built with Python.</p>
+                        <div class="tags">
+                            <span>System I/O</span>
+                            <span>Python</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://filehandlingproject-mbevgff23iqepxbioy4hx5.streamlit.app/" target="_blank">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/SohailKhan0525/File_Handling_Project" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2>Technical Stack</h2>
+                <p>Tools and technologies I use to build the future.</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-group glass-panel">
+                    <h3><i class="fa-brands fa-python"></i> Core</h3>
+                    <div class="skill-bar">
+                        <div class="info"><span>Python</span><span>100%</span></div>
+                        <div class="bar"><div class="fill" style="width: 100%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info"><span>Data Structures</span><span>50%</span></div>
+                        <div class="bar"><div class="fill" style="width: 50%"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-group glass-panel">
+                    <h3><i class="fa-solid fa-brain"></i> AI & ML</h3>
+                    <div class="skill-bar">
+                        <div class="info"><span>Supervised Learning</span><span>80%</span></div>
+                        <div class="bar"><div class="fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info"><span>Deep Learning</span><span>Learning</span></div>
+                        <div class="bar"><div class="fill" style="width: 15%"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-group glass-panel">
+                    <h3><i class="fa-solid fa-square-root-variable"></i> Mathematics</h3>
+                    <div class="skill-bar">
+                        <div class="info"><span>Linear Algebra</span><span>50%</span></div>
+                        <div class="bar"><div class="fill" style="width: 50%"></div></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="info"><span>Statistics</span><span>50%</span></div>
+                        <div class="bar"><div class="fill" style="width: 50%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-container glass-panel">
+                <div class="contact-left">
+                    <h2>Let's Collaborate</h2>
+                    <p>Have a project in mind? Send me a message and let's create something amazing together.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/SohailKhan0525" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/sohailkhan0525/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <form id="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label>Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Your Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label>Your Message</label>
+                    </div>
+                    <button type="submit" class="btn primary">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 TriAI Labs. Designed by Mohd Zaheer Uddin.</p>
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
