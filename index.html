@@ -1,134 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriAI Labs | 3D Interactive Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TriAI Labs • Mohd Zaheer Uddin</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <canvas class="webgl"></canvas>
+  <!-- THEME TOGGLE (3D floating button) -->
+  <button id="theme-toggle" aria-label="Toggle light / dark mode">
+    <i class="fa-solid fa-sun"></i>
+    <i class="fa-solid fa-moon"></i>
+  </button>
 
-    <div id="loader">
-        <div class="scanner"></div>
-        <div class="loading-text">INITIALIZING TRIAI SYSTEMS...</div>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="logo">
+      <a href="#home">TriAI Labs</a>
     </div>
 
     <nav>
-        <div class="logo">TriAI <span>Labs</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">CORE</a></li>
-            <li><a href="#projects">MODULES</a></li>
-            <li><a href="#skills">DATA</a></li>
-            <li><a href="#contact">UPLINK</a></li>
-        </ul>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
 
-    <main>
-        
-        <section id="home" class="section hero">
-            <div class="content-wrapper left-align">
-                <h2 class="role-tag">AI ENGINEER // ARCHITECT</h2>
-                <h1 class="glitch" data-text="MOHD ZAHEER UDDIN">MOHD ZAHEER <br> <span class="highlight">UDDIN</span></h1>
-                <p class="hero-desc">Building the next generation of intelligent systems. Deep Learning, Computer Vision, and Predictive Analytics.</p>
-                <a href="#projects" class="cy-btn">INITIALIZE PROTOCOLS</a>
-            </div>
-        </section>
+  <!-- MAIN CONTENT -->
+  <main>
 
-        <section id="projects" class="section projects">
-            <div class="content-wrapper right-align">
-                <h2 class="section-title">PROJECT MODULES</h2>
-                <p class="section-sub">Interactive Deployment Units</p>
-                
-                <div class="project-list">
-                    <div class="project-item" data-hover-id="1">
-                        <h3>01 // HOUSE PRICE PREDICTION</h3>
-                        <p>Predictive market algorithms utilizing Regression Analysis.</p>
-                        <a href="https://housepriceprediction-rqo8ykwgldxbpemwl6kvok.streamlit.app/" target="_blank">DEPLOY <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+    <!-- HERO -->
+    <section id="home" class="hero section">
+      <!-- 3D background layers for hero (no particles) -->
+      <div class="hero-3d-bg" aria-hidden="true">
+        <div class="hero-orbit orbit-1"></div>
+        <div class="hero-orbit orbit-2"></div>
+        <div class="hero-orbit orbit-3"></div>
+        <div class="hero-orb main-orb"></div>
+      </div>
 
-                    <div class="project-item" data-hover-id="2">
-                        <h3>02 // GLOBAL QUAKE AI</h3>
-                        <p>Seismic data interpretation using Statistical ML.</p>
-                        <a href="https://github.com/SohailKhan0525/Global-Earthquake-Prediction" target="_blank">SOURCE <i class="fa-brands fa-github"></i></a>
-                    </div>
+      <div class="hero-inner">
+        <!-- LEFT -->
+        <div class="hero-left">
+          <p class="hello">Hello, I'm</p>
+          <h1 class="name">
+            Mohd Zaheer <span class="gradient">Uddin</span>
+          </h1>
 
-                    <div class="project-item" data-hover-id="3">
-                        <h3>03 // HEART DISEASE CLASSIFIER</h3>
-                        <p>Biomedical metric analysis for early detection.</p>
-                        <a href="https://heartdiseaseml-4zrcurmudxpfxbwygcuyyt.streamlit.app/" target="_blank">DEPLOY <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+          <p class="subtitle" id="role">AI Engineer • Tech Enthusiast</p>
+
+          <p class="hero-description">
+            I'm an AI Engineer focused on building intelligent tools,
+            solving real-world problems and improving my skills daily.
+          </p>
+
+          <!-- Social icons -->
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/SohailKhan0525" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" aria-label="X (Twitter)">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+
+          <!-- CTAs -->
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
+            <a
+              href="resume.pdf"
+              class="btn btn-ghost"
+              target="_blank"
+              rel="noopener"
+            >
+              View Resume
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: 3D logo scene -->
+        <div class="hero-right">
+          <div class="hero-3d-scene">
+            <div class="hero-3d-card" data-tilt>
+              <div class="hero-3d-ring ring-1"></div>
+              <div class="hero-3d-ring ring-2"></div>
+              <div class="hero-3d-ring ring-3"></div>
+              <div class="hero-3d-logo">
+                <!-- You can replace with your image if you like -->
+                <div class="tri-logo-mark">
+                  <span class="tri-node n1"></span>
+                  <span class="tri-node n2"></span>
+                  <span class="tri-node n3"></span>
                 </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section skills">
-            <div class="content-wrapper center-align">
-                <h2 class="section-title">DATA ARSENAL</h2>
-                <div class="skill-grid">
-                    <div class="skill-card">
-                        <i class="fa-brands fa-python"></i>
-                        <h4>PYTHON</h4>
-                        <div class="bar-container"><div class="bar" style="width:100%"></div></div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fa-solid fa-brain"></i>
-                        <h4>TENSORFLOW</h4>
-                        <div class="bar-container"><div class="bar" style="width:80%"></div></div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fa-solid fa-database"></i>
-                        <h4>SQL / NO-SQL</h4>
-                        <div class="bar-container"><div class="bar" style="width:70%"></div></div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fa-solid fa-code-branch"></i>
-                        <h4>GIT OPS</h4>
-                        <div class="bar-container"><div class="bar" style="width:85%"></div></div>
-                    </div>
+                <div class="tri-logo-text">
+                  <span class="tri-main">TriAI</span>
+                  <span class="tri-sub">Labs</span>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
 
-        <section id="contact" class="section contact">
-            <div class="content-wrapper left-align">
-                <h2 class="section-title">ESTABLISH UPLINK</h2>
-                <p>Transmission channels are open for collaboration.</p>
-                
-                <form id="contact-form" class="cyber-form">
-                    <div class="input-group">
-                        <label>IDENTITY</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="input-group">
-                        <label>FREQUENCY (EMAIL)</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="input-group">
-                        <label>TRANSMISSION</label>
-                        <textarea id="message" required></textarea>
-                    </div>
-                    <button type="submit" class="cy-btn">SEND DATA</button>
-                </form>
+      </div>
+    </section>
 
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank">LN</a>
-                    <a href="https://github.com" target="_blank">GH</a>
-                    <a href="https://instagram.com" target="_blank">IG</a>
-                </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="projects section">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtext">
+        A few 3D-styled snapshots of the things I’m building.
+      </p>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: Global Earthquake Prediction -->
+        <article class="project-card-3d reveal-on-scroll" data-tilt>
+          <div class="project-3d-layer"></div>
+          <div class="project-content">
+            <div class="project-icon" aria-hidden="true">
+              <i class="fa-solid fa-earth-americas"></i>
             </div>
-        </section>
+            <h3>Global Earthquake Prediction</h3>
+            <p>
+              An AI model that predicts global earthquake risks using
+              machine-learning techniques and historical seismic data.
+            </p>
+            <div class="project-buttons">
+              <button
+                class="project-btn outline no-demo"
+                type="button"
+                data-project="Global Earthquake Prediction"
+              >
+                Live Demo
+              </button>
+              <a
+                class="project-btn outline"
+                href="https://github.com/SohailKhan0525/Global-Earthquake-Prediction"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
 
-    </main>
+        <!-- PROJECT 2: Heart Disease Prediction -->
+        <article class="project-card-3d reveal-on-scroll" data-tilt>
+          <div class="project-3d-layer"></div>
+          <div class="project-content">
+            <div class="project-icon" aria-hidden="true">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h3>Heart Disease Prediction</h3>
+            <p>
+              An ML model that predicts the likelihood of heart disease
+              based on key health metrics and lifestyle factors.
+            </p>
+            <div class="project-buttons">
+              <a
+                class="project-btn"
+                href="https://heartdiseaseml-4zrcurmudxpfxbwygcuyyt.streamlit.app/"
+                target="_blank"
+                rel="noopener"
+              >
+                Live Demo
+              </a>
+              <a
+                class="project-btn outline"
+                href="https://github.com/SohailKhan0525/HeartDiseasePrediction"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    
-    <script src="script.js"></script>
+        <!-- PROJECT 3: Student Management -->
+        <article class="project-card-3d reveal-on-scroll" data-tilt>
+          <div class="project-3d-layer"></div>
+          <div class="project-content">
+            <div class="project-icon" aria-hidden="true">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <h3>Student Management</h3>
+            <p>
+              A Python-based student record system and Streamlit UI
+              for tracking students, courses, and grades efficiently.
+            </p>
+            <div class="project-buttons">
+              <a
+                class="project-btn"
+                href="https://studentmanagement-streamlit-link.example"
+                target="_blank"
+                rel="noopener"
+              >
+                Live Demo
+              </a>
+              <a
+                class="project-btn outline"
+                href="https://github.com/SohailKhan0525/StudentManagement"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 4: Bank Management -->
+        <article class="project-card-3d reveal-on-scroll" data-tilt>
+          <div class="project-3d-layer"></div>
+          <div class="project-content">
+            <div class="project-icon" aria-hidden="true">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3>Bank Management System</h3>
+            <p>
+              A Python banking system for creating accounts, managing
+              deposits, withdrawals, and viewing account details.
+            </p>
+            <div class="project-buttons">
+              <button
+                class="project-btn outline no-demo"
+                type="button"
+                data-project="Bank Management System"
+              >
+                Live Demo
+              </button>
+              <a
+                class="project-btn outline"
+                href="https://github.com/SohailKhan0525/BankManagement"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5: File Handling -->
+        <article class="project-card-3d reveal-on-scroll" data-tilt>
+          <div class="project-3d-layer"></div>
+          <div class="project-content">
+            <div class="project-icon" aria-hidden="true">
+              <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <h3>File Handling Utility</h3>
+            <p>
+              A Python file management tool and Streamlit UI to create,
+              read, update, and delete files with a clean interface.
+            </p>
+            <div class="project-buttons">
+              <button
+                class="project-btn outline no-demo"
+                type="button"
+                data-project="File Handling Utility"
+              >
+                Live Demo
+              </button>
+              <a
+                class="project-btn outline"
+                href="https://github.com/SohailKhan0525/FileHandling"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills section">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtext">
+        A quick, 3D-styled snapshot of what I’m learning and using.
+      </p>
+
+      <div class="skills-grid">
+
+        <!-- Programming -->
+        <div class="skill-card skill-category">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+            <div>
+              <h3>Programming</h3>
+              <p>Core foundations for AI engineering.</p>
+            </div>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-brands fa-python"></i> Python</span>
+                <small>Learned — 100%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="100"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-brands fa-git-alt"></i> Git</span>
+                <small>Learning — 40%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="40"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-terminal"></i> Linux</span>
+                <small>Learning — 40%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="40"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-database"></i> Data Structures</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Math -->
+        <div class="skill-card skill-category">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="fa-solid fa-square-root-variable"></i></div>
+            <div>
+              <h3>Math</h3>
+              <p>Mathematical backbone for ML &amp; DL.</p>
+            </div>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-superscript"></i> Linear Algebra</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-infinity"></i> Calculus</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-percent"></i> Probability</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-chart-simple"></i> Statistics</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="skill-card skill-category">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <h3>Machine Learning</h3>
+              <p>Modeling fundamentals for AI systems.</p>
+            </div>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-check-double"></i> Supervised Learning</span>
+                <small>Learning — 80%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="80"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-expand"></i> Unsupervised Learning</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-chart-line"></i> Model Evaluation</span>
+                <small>Halfway — 50%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="50"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deep Learning -->
+        <div class="skill-card skill-category">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+            <div>
+              <h3>Deep Learning</h3>
+              <p>Neural network architectures and techniques.</p>
+            </div>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-network-wired"></i> Neural Networks</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-image"></i> CNNs</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-wave-square"></i> RNNs</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-shapes"></i> Transformers</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern AI -->
+        <div class="skill-card skill-category">
+          <div class="skill-card-header">
+            <div class="skill-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div>
+              <h3>Modern AI</h3>
+              <p>LLMs, RAG, agentic systems &amp; prompts.</p>
+            </div>
+          </div>
+          <div class="skill-list">
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-file-lines"></i> LLMs</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-robot"></i> Agentic AI</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-book"></i> RAG</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+
+            <div class="skill-item" data-tilt>
+              <div class="skill-top">
+                <span><i class="fa-solid fa-terminal"></i> Prompt Engineering</span>
+                <small>0–5%</small>
+              </div>
+              <div class="bar"><div class="fill" data-level="5"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtext">
+        Let’s work together or talk about a project idea.
+      </p>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your Email" required />
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>© 2025 TriAI Labs • Mohd Zaheer Uddin</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/SohailKhan0525" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Popup for "no live demo" + form messages -->
+  <div id="popup" class="popup"></div>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
 </body>
 </html>
