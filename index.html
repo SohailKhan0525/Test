@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOHD ZAHEER UDDIN | AI ENGINEER</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#050505" />
+</head>
+<body>
+
+  <div class="scanlines"></div>
+
+  <div id="preloader">
+    <div class="cyber-loader"></div>
+    <div class="loader-text" data-text="INITIALIZING SYSTEM...">INITIALIZING SYSTEM...</div>
+  </div>
+
+  <canvas id="neural-canvas"></canvas>
+
+  <header class="navbar">
+    <div class="logo">
+      <span class="bracket">[</span>
+      <span class="glitch-text" data-text="QOFENO">QOFENO</span>
+      <span class="bracket">]</span>
+    </div>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <a href="#home" class="nav-link" data-text="HOME">HOME</a>
+      <a href="#projects" class="nav-link" data-text="PROJECTS">PROJECTS</a>
+      <a href="#skills" class="nav-link" data-text="SKILLS">SKILLS</a>
+      <a href="#contact" class="nav-link" data-text="CONTACT">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span> SYSTEM ONLINE
+        </div>
+        
+        <h2 class="role-text">HELLO, I AM</h2>
+        <h1 class="glitch-name" data-text="MOHD ZAHEER UDDIN">MOHD ZAHEER UDDIN</h1>
+        <h2 class="role-text typed-output">AI ENGINEER <span class="blink">_</span></h2>
+
+        <p class="hero-desc">
+          Architecting intelligent systems and neural networks. 
+          Focusing on deep learning, predictive modeling, and scalable AI solutions.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="cyber-btn primary">
+            <span class="btn-content">EXPLORE WORK</span>
+            <span class="btn-glitch"></span>
+          </a>
+          <a href="#contact" class="cyber-btn secondary">
+            <span class="btn-content">INITIATE CONTACT</span>
+          </a>
+        </div>
+
+        <div class="social-hud">
+          <a href="https://github.com/SohailKhan0525" target="_blank" class="hud-icon"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/mohd-zaheer-uddin-166b3b356/" target="_blank" class="hud-icon"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/sohailkhan0525/" target="_blank" class="hud-icon"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="hologram-container">
+           <div class="cyber-sphere">
+             <div class="ring r1"></div>
+             <div class="ring r2"></div>
+             <div class="ring r3"></div>
+             <div class="core"></div>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-text="PROJECT_MODULES">PROJECT_MODULES</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="projects-grid">
+        <article class="cyber-card tilt-card">
+          <div class="card-border"></div>
+          <div class="card-content">
+            <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>House Price Prediction</h3>
+            <p>AI regression model for real estate valuation.</p>
+            <div class="tech-stack">
+              <span>Python</span><span>Sklearn</span><span>Streamlit</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://housepriceprediction-rqo8ykwgldxbpemwl6kvok.streamlit.app/" target="_blank">DEMO</a>
+              <a href="https://github.com/SohailKhan0525/HousePricePrediction" target="_blank">CODE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cyber-card tilt-card">
+          <div class="card-border"></div>
+          <div class="card-content">
+            <div class="icon-box"><i class="fa-solid fa-earth-americas"></i></div>
+            <h3>Earthquake Prediction</h3>
+            <p>Global seismic risk analysis using ML algorithms.</p>
+            <div class="tech-stack">
+              <span>Pandas</span><span>Scikit-Learn</span><span>Data Viz</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="no-demo" data-msg="Model only - No UI available">DEMO</a>
+              <a href="https://github.com/SohailKhan0525/Global-Earthquake-Prediction" target="_blank">CODE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cyber-card tilt-card">
+          <div class="card-border"></div>
+          <div class="card-content">
+            <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+            <h3>Heart Disease AI</h3>
+            <p>Predictive analysis for cardiac health metrics.</p>
+            <div class="tech-stack">
+              <span>Logistic Reg</span><span>Python</span><span>Health AI</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://heartdiseaseml-4zrcurmudxpfxbwygcuyyt.streamlit.app/" target="_blank">DEMO</a>
+              <a href="https://github.com/SohailKhan0525/HeartDiseaseML" target="_blank">CODE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="cyber-card tilt-card">
+          <div class="card-border"></div>
+          <div class="card-content">
+            <div class="icon-box"><i class="fa-solid fa-user-graduate"></i></div>
+            <h3>Student Management</h3>
+            <p>Backend logic for efficient academic record tracking.</p>
+            <div class="tech-stack">
+              <span>Python</span><span>File I/O</span><span>Logic</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://studentmanagementproject-ulj54ytmcyj55upzakbzhn.streamlit.app/" target="_blank">DEMO</a>
+              <a href="https://github.com/SohailKhan0525/StudentManagementProject" target="_blank">CODE</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-text="NEURAL_CAPABILITIES">NEURAL_CAPABILITIES</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-hud-panel">
+          <h3><i class="fa-brands fa-python"></i> CORE</h3>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>Python</span> <span>100%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="width: 100%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>Git / Version Control</span> <span>40%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="width: 40%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-hud-panel">
+          <h3><i class="fa-solid fa-brain"></i> INTELLIGENCE</h3>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>Supervised Learning</span> <span>80%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="width: 80%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>Linear Algebra</span> <span>50%</span></div>
+            <div class="sb-track"><div class="sb-fill" style="width: 50%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-hud-panel">
+          <h3><i class="fa-solid fa-network-wired"></i> DEEP LEARNING</h3>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>Neural Networks</span> <span>Learning</span></div>
+            <div class="sb-track"><div class="sb-fill" style="width: 10%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="sb-label"><span>LLMs & Transformers</span> <span>Loading...</span></div>
+            <div class="sb-track animated-stripe"><div class="sb-fill" style="width: 5%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 class="section-title" data-text="TRANSMISSION_LINK">TRANSMISSION_LINK</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="contact-terminal">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="term-title">usr/bin/send_msg</span>
+        </div>
+        <form id="contact-form">
+          <div class="input-group">
+            <label>> ENTER_IDENTITY:</label>
+            <input type="text" id="name" required placeholder="_" />
+          </div>
+          <div class="input-group">
+            <label>> TARGET_EMAIL:</label>
+            <input type="email" id="email" required placeholder="_" />
+          </div>
+          <div class="input-group">
+            <label>> DATA_PACKET:</label>
+            <textarea id="message" required placeholder="_"></textarea>
+          </div>
+          <button type="submit" class="cyber-btn primary">
+            <span class="btn-content">EXECUTE SEND</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>SYSTEM DESIGN BY <span class="accent">QOFENO LABS</span> // 2025</p>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
